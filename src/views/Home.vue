@@ -5,19 +5,32 @@
             <TopBar></TopBar>
         </el-header>
         <el-main>
-            <el-row :gutter="20">
-                <el-col :span="4"><div class="grid-content ep-bg-purple" />
-                    <Nav></Nav>
-                </el-col>
-                <el-col :span="16"><div class="grid-content ep-bg-purple" />
-                    <el-card class="box-card">
-                        <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                    </el-card>
-                </el-col>
-                <el-col :span="4"><div class="grid-content ep-bg-purple" />
-
-                </el-col>
+            <div style="margin:0 100px ;">
+                <el-row :gutter="20">
+                    <el-col :span="5"><div class="grid-content ep-bg-purple" />
+                        <!-- <Nav></Nav> -->
+                        <el-card class="box-card box-card-left">
+                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                        </el-card>
+                        <el-card class="box-card box-card-left">
+                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="14"><div class="grid-content ep-bg-purple" />
+                        <el-card class="box-card">
+                            <div v-for="o in 50" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="5"><div class="grid-content ep-bg-purple" />
+                        <el-card class="box-card">
+                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                        </el-card>
+                        <el-card class="box-card">
+                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                        </el-card>
+                    </el-col>
                 </el-row>
+            </div>
         </el-main>
         <el-footer>
             <Footer></Footer>
@@ -34,6 +47,9 @@ export default {
 }
 </script>
 <style>
+.box-card-left{
+    margin-bottom: 20px;
+}
 .el-header{
     padding: 0 !important;
 }
