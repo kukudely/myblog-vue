@@ -2,34 +2,11 @@
   <div class="common-layout">
     <el-container>
         <el-header>
-            <TopBar></TopBar>
+            <!-- <TopBar></TopBar> -->
         </el-header>
         <el-main>
-            <div style="margin:0 100px ;">
-                <el-row :gutter="20">
-                    <el-col :span="5"><div class="grid-content ep-bg-purple" />
-                        <!-- <Nav></Nav> -->
-                        <el-card class="box-card box-card-left">
-                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                        </el-card>
-                        <el-card class="box-card box-card-left">
-                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="14"><div class="grid-content ep-bg-purple" />
-                        <el-card class="box-card">
-                            <div v-for="o in 50" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="5"><div class="grid-content ep-bg-purple" />
-                        <el-card class="box-card">
-                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                        </el-card>
-                        <el-card class="box-card">
-                            <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                        </el-card>
-                    </el-col>
-                </el-row>
+            <div style="max-width: 1000px;; margin:0 auto">
+                <Main></Main>
             </div>
         </el-main>
         <el-footer>
@@ -42,14 +19,13 @@
 import TopBar from '../components/TopBar.vue'
 import Footer from '../components/Footer.vue'
 import Nav from '../components/Nav.vue'
+import Main from '../components/Main.vue'
 export default {
-  components: { TopBar, Footer, Nav}
+  components: { TopBar, Main, Footer, Nav }
 }
 </script>
 <style>
-.box-card-left{
-    margin-bottom: 20px;
-}
+
 .el-header{
     padding: 0 !important;
 }
