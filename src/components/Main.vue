@@ -19,7 +19,7 @@
             </el-card>
 
         </el-col>
-        <el-col :xs="24" :sm="1" :md="6" :lg="6" :xl="6" class="col-right"><div class="grid-content ep-bg-purple" />
+        <el-col :xs="24" :sm="1" :md="6" :lg="6" :xl="6" id="col-right" v-show="screenWidth >= 992"><div class="grid-content ep-bg-purple" />
 
             <el-card class="box-card box-card-right">
                 <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
@@ -37,6 +37,7 @@
 }
 </style>
 <script lang="ts" setup>
+
 import { reactive, toRefs} from 'vue'
 
 
@@ -49,22 +50,5 @@ const state = reactive({
 })
 
 const { circleUrl, squareUrl, sizeList } = toRefs(state)
-
-// const vm = new Vue({ // 配置对象 options
-//     // 配置选项(option)
-//     el: '#col-right',  // element: 指定用vue来管理页面中的哪个标签区域
-//     data: {
-//         screenWidth: 992
-//     },
-//     mounted(){
-//         const that = this
-//         window.onresize = () => {
-//             return (() => {
-//                 window.screenWidth = document.body.clientWidth
-//                 that.screenWidth = window.screenWidth
-//             })()
-//         }
-//     }
-// })
 
 </script>
