@@ -5,7 +5,7 @@
             <!-- <TopBar></TopBar> -->
         </el-header>
         <el-main>
-            <div style="max-width: 1000px;; margin:0 auto">
+            <div style="max-width: 1200px; margin:0 auto">
                 <Main></Main>
             </div>
         </el-main>
