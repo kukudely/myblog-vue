@@ -4,12 +4,12 @@
         <el-header>
             <!-- <TopBar></TopBar> -->
         </el-header>
-        <el-main>
+        <el-main style="background-color:whitesmoke;height: 100%;">
             <div style="max-width: 1200px; margin:0 auto">
                 <Main></Main>
             </div>
         </el-main>
-        <el-footer>
+        <el-footer style="position:fixed; bottom:0px; width: 100%;">
             <Footer></Footer>
         </el-footer>
     </el-container>

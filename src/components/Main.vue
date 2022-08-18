@@ -32,10 +32,16 @@
 
         <el-col :xs="24" :sm="18" :md="12" :lg="12" :xl="12" id="col-main"><div class="grid-content ep-bg-purple" />
 
-            <el-card class="box-card box-card-main" v-for="o in 3">
-                <div v-for="o in 15" :key="o" class="text item">{{ 'List item ' + o }}</div>
+            <el-card class="box-card box-card-main" v-for="item in artList">
+                <div>
+                    {{item.title}}
+                </div>
+                <div>
+                    {{item.desc}}
+                </div>
+                <!-- <div v-for="o in 15" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
             </el-card>
-            <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="3" :total=total />
+            <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :page-size=pageSize :total=total />
         </el-col>
 
         <el-col :xs="24" :sm="1" :md="6" :lg="6" :xl="6" id="col-right" v-show="screenWidth >= 992 || screenWidth<=768"><div class="grid-content ep-bg-purple" />
@@ -99,14 +105,17 @@ export default {
         //         default: 992,
         //     },
         // },
+        // beforeCreate(){
+            
+        // },
         created() {
             this.getProfile()
+            this.getArticleList()
             const that = this
             window.onload = () => {
                 return (() => {
                     window.screenWidth = document.body.clientWidth
                     that.screenWidth = window.screenWidth
-                    // console.log(that.screenWidth)
                 })()
             }
 
@@ -133,7 +142,9 @@ export default {
                 myImg:" ",
                 profile:{},
                 currentPage:1, //默认当前页面为1
-                total: 200, //总共有多少数据
+                total: 1, //总共有多少数据
+                pageSize: 5,
+                artList: [],
             };
         },
         methods: {
@@ -143,9 +154,21 @@ export default {
                 this.myName = res.data.name
                 this.myImg = res.data.img
             },
+            async getArticleList() {
+                const { data: res } = await this.$http.get(`article`,{
+                    params: {
+                        pagesize: this.pageSize,
+                        pagenum: this.currentPage
+                    }
+                })
+                this.artList = res.data
+                this.total = res.total
+                // console.log(this.currentPageTotal)
+            },
             async handleCurrentChange(val){
                 this.currentPage = val
-                console.log(this.currentPage)
+                this.getArticleList()
+                // console.log(this.currentPage)
             }
         },
         destroyed(){
