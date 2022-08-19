@@ -143,7 +143,7 @@ export default {
                 profile:{},
                 currentPage:1, //默认当前页面为1
                 total: 1, //总共有多少数据
-                pageSize: 20,
+                pageSize: 5,
                 artList: [],
             };
         },

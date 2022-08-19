@@ -7,11 +7,13 @@
         <el-main style="background-color:whitesmoke;height: 100%;">
             <div style="max-width: 1200px; margin:0 auto">
                 <Main></Main>
+                <!-- <router-view :key="$route.path"></router-view> -->
             </div>
         </el-main>
-        <el-footer style="position:fixed; bottom:0px; width: 100%;">
+        <el-footer>
             <Footer></Footer>
         </el-footer>
+        <el-backtop :bottom="50" />
     </el-container>
   </div>
 </template>
