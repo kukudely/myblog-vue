@@ -4,14 +4,16 @@
         <el-header>
             <!-- <TopBar></TopBar> -->
         </el-header>
-        <el-main>
+        <el-main style="background-color:whitesmoke;height: 100%;">
             <div style="max-width: 1200px; margin:0 auto">
                 <Main></Main>
+                <!-- <router-view :key="$route.path"></router-view> -->
             </div>
         </el-main>
         <el-footer>
             <Footer></Footer>
         </el-footer>
+        <el-backtop :bottom="50" />
     </el-container>
   </div>
 </template>

@@ -6,6 +6,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 
 import axios from 'axios'
+// import router from './router'
 
 // axios请求地址
 axios.defaults.baseURL = 'http://180.76.187.248:3000/api/v1'
