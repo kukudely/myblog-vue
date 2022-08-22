@@ -32,21 +32,7 @@
         </el-col>
         <!-- middle -->
         <el-col :xs="24" :sm="18" :md="12" :lg="12" :xl="12" id="col-main"><div class="grid-content ep-bg-purple" />
-<<<<<<< HEAD
             <router-view :key="$route.path"></router-view>
-=======
-
-            <el-card class="box-card box-card-main" v-for="item in artList">
-                <div>
-                    {{item.title}}
-                </div>
-                <div>
-                    {{item.desc}}
-                </div>
-                <!-- <div v-for="o in 15" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
-            </el-card>
-            <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :page-size=pageSize :total=total />
->>>>>>> dac010b010908efa4e24fe932450966ee1060832
         </el-col>
 
         <!-- right -->
