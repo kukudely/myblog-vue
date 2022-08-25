@@ -1,8 +1,10 @@
 <template>
   <div class="common-layout">
     <el-container>
-        <el-header>
-            <!-- <TopBar></TopBar> -->
+        <el-header> 
+            <div >
+              <TopBar></TopBar>
+            </div>
         </el-header>
         <el-main style="background-color:whitesmoke;height: 100%;">
             <div style="max-width: 1200px; margin:0 auto">

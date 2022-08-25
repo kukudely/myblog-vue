@@ -17,8 +17,9 @@ const router = createRouter({
             component:ArticleList,
         },
         {
-            path:'/ArticleContent',
+            path:'/ArticleContent/:id',
             component:ArticleContent,
+            props: true
         }
     ]
 })

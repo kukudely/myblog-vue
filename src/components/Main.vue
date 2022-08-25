@@ -14,8 +14,13 @@
                 </div>
                 <!-- <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
                 </el-card>
+                <!-- 分类 -->
                 <el-card class="box-card box-card-left">
-                    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                    <div v-for="item in cateList" >
+                        <div style="display: inline;">{{item.name}}</div>
+                        
+                        <div style="display: inline; float: right; ">{{this.cateArticleList.get(item.id)}}</div>
+                    </div>
                 </el-card>
             </div>
             
@@ -49,7 +54,7 @@
                 <!-- <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
                 </el-card>
                 <el-card class="box-card box-card-left">
-                    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                    
                 </el-card>
             </div>
             
@@ -103,7 +108,8 @@ export default {
     // },
     created() {
         this.getProfile()
-        this.getArticleList()
+        this.getCateList()
+        // this.getArticleList()
         const that = this
         window.onload = () => {
             return (() => {
@@ -138,6 +144,9 @@ export default {
             total: 1, //总共有多少数据
             pageSize: 20,
             artList: [],
+            cateList: [],
+            // cateArticleList: [],
+            cateArticleList:new Map(),
         };
     },
     methods: {
@@ -147,27 +156,24 @@ export default {
             this.myName = res.data.name
             this.myImg = res.data.img
         },
-        async getArticleList() {
-            const { data: res } = await this.$http.get(`article`,{
-                params: {
-                    pagesize: this.pageSize,
-                    pagenum: this.currentPage
-                }
-            })
-            this.artList = res.data
-            this.total = res.total
-            // console.log(this.currentPageTotal)
+        async getCateList() {
+            const { data: res } = await this.$http.get(`category`)
+            this.cateList = res.data
+            for (let i = 0; i < this.cateList.length; i++) {
+
+                this.getCateArtList(this.cateList[i].id)
+            }
         },
-        async handleCurrentChange(val){
-            this.currentPage = val
-            this.getArticleList()
-            // console.log(this.currentPage)
-        }
+        async getCateArtList(id) {
+            const { data: res } = await this.$http.get(`article/list/${id}`)
+            this.cateArticleList.set(id, res.total)
+            // this.cateArticleList.push(res.total)
+            // console.log(this.cateArticleList)
+        },
     },
     destroyed() {
         window.onresize = null;
     },
-    // components: { ArticleList }
 }
 
 </script>
