@@ -25,12 +25,20 @@
             </div>
             
             <div v-show="screenWidth <= 992 && screenWidth>=768">
-                 <el-card class="box-card box-card-right">
-                    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                </el-card>
                 <el-card class="box-card box-card-right">
+                <span>最近文章</span>
+
+                <div style="margin-top: 10px;" v-for="item in recentArtList" class="text item">
+                   
+                    <p>{{item.CreatedAt}}</p>
+                    <el-link @click="$router.push(`/ArticleContent/${item.ID}`)">{{item.title}}</el-link>
+                    <el-divider />
+                </div>
+                
+            </el-card>
+                <!-- <el-card class="box-card box-card-right">
                     <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-                </el-card>
+                </el-card> -->
             </div>
            
 
@@ -59,11 +67,19 @@
             </div>
             
             <el-card class="box-card box-card-right">
-                <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+                <span>最近文章</span>
+
+                <div style="margin-top: 10px;" v-for="item in recentArtList" class="text item">
+                   
+                    <p>{{item.CreatedAt}}</p>
+                    <el-link @click="$router.push(`/ArticleContent/${item.ID}`)">{{item.title}}</el-link>
+                    <el-divider />
+                </div>
+                
             </el-card>
-            <el-card class="box-card box-card-right">
+            <!-- <el-card class="box-card box-card-right">
                 <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-            </el-card>
+            </el-card> -->
 
         </el-col>
     </el-row>
@@ -109,6 +125,7 @@ export default {
     created() {
         this.getProfile()
         this.getCateList()
+        this.getRecentArtList()
         // this.getArticleList()
         const that = this
         window.onload = () => {
@@ -131,7 +148,7 @@ export default {
             return (() => {
                 window.screenWidth = document.body.clientWidth
                 that.screenWidth = window.screenWidth
-            })()
+            })() 
         }
     },
     data() {
@@ -145,6 +162,8 @@ export default {
             pageSize: 20,
             artList: [],
             cateList: [],
+            recentArtList:[],
+            recentArtListLength:4,
             // cateArticleList: [],
             cateArticleList:new Map(),
         };
@@ -163,6 +182,18 @@ export default {
 
                 this.getCateArtList(this.cateList[i].id)
             }
+        },
+        async getRecentArtList() {
+            const { data: res } = await this.$http.get(`recentart`,{
+                params: {
+                    artnums: this.recentArtListLength,
+                }
+            })
+            this.recentArtList = res.data
+            for (let i = 0; i < this.recentArtListLength; i++) {
+                this.recentArtList[i].CreatedAt = this.recentArtList[i].CreatedAt.substr(0,10);
+            }
+            console.log(this.recentArtList)
         },
         async getCateArtList(id) {
             const { data: res } = await this.$http.get(`article/list/${id}`)

@@ -1,14 +1,16 @@
 <template>
-    <div>
-        {{artInfo.img}}
-    </div>
-    <div>
-        {{artInfo.title}}
-    </div>
-    <div>
-        {{artInfo.content}}
-    </div>
-    
+    <el-card class="box-card box-card-main">
+        <div>
+            <el-image :src=artInfo.img />
+        </div>
+        <div style="font-size: 25px;padding: 5px; font-family:微软雅黑;">
+            <!-- {{item.ID}} -->
+            {{artInfo.title}}
+        </div>
+        <div style="padding: 5px; font-family:微软雅黑;">
+            &nbsp;&nbsp;&nbsp;&nbsp;{{artInfo.content}}
+        </div>
+    </el-card>
     <!-- 评论 -->
     <div>
       <el-card class="box-card" style="margin-top: 20px;">
@@ -28,10 +30,16 @@
     </div>
     <div>
       <el-card class="box-card" style="margin-top: 20px;">
-        <div v-for="item in commentList" :key="item.id" class="text item">
-          <p>{{item.username}}</p>
-          <p>{{item.CreatedAt}}</p>
-          <p>{{item.content}}</p>
+        <div >
+          <font>评论数:</font>
+          {{this.total}}
+        </div>
+        <div v-for="item in commentList" :key="item.id" class="text item" style="padding: 5px;">
+          <div style="padding: 5px; border: 1px;border-color: gainsboro; border-style:solid; border-radius: 4px;">
+            <p>{{item.username}}</p>
+            <p>{{item.CreatedAt}}</p>
+            <p>{{item.content}}</p>
+          </div>
         </div>
       </el-card>
     </div>
@@ -105,7 +113,9 @@ export default {
       })
       if (res.status !== 200) return this.$message.error(res.message)
       this.$message.success('评论成功，待审核后显示')
-      this.$router.go(0)
+      // this.$router.go(0)
+      // window.location.reload()
+      this.getCommentList()
     }
   }
 }

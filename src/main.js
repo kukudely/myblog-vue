@@ -9,7 +9,7 @@ import axios from 'axios'
 // import router from './router'
 
 // axios请求地址
-axios.defaults.baseURL = 'http://180.76.187.248:3000/api/v1'
+axios.defaults.baseURL = 'http://localhost:3000/api/v1'
 
 const app = createApp(App).use(ElementPlus).use(router)
 app.config.globalProperties.$http = axios

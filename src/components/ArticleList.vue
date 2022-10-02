@@ -2,13 +2,17 @@
     <el-card class="box-card box-card-main" 
             v-for="item in artList" 
             link
-            @click="$router.push(`/ArticleContent/${item.ID}`)">
+            @click="$router.push(`/ArticleContent/${item.ID}`)"
+            style="cursor: pointer;">
         <div>
-            {{item.ID}}
+            <el-image :src=item.img />
+        </div>
+        <div style="font-size: 25px;padding: 5px; font-family:微软雅黑;">
+            <!-- {{item.ID}} -->
             {{item.title}}
         </div>
-        <div>
-            {{item.desc}}
+        <div style="padding: 5px; font-family:微软雅黑;">
+            &nbsp;&nbsp;&nbsp;&nbsp;{{item.desc}}
         </div>
     </el-card>
     <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :page-size=pageSize :total=total />

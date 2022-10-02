@@ -12,10 +12,10 @@
         @click="$router.push(`/`)">LOGO</el-menu-item>
       <div style="flex-grow: 4;" />
       <div style="line-height: 58px;">
-        <el-button :icon="Search" circle />
+        <el-button :icon="Search" circle @click="$router.push(`/Search`)"/>
       </div>
-      <el-menu-item index="2">Processing Center</el-menu-item>
-      <el-menu-item index="3">Processing Center</el-menu-item>
+      <!-- <el-menu-item index="2">Processing Center</el-menu-item>
+      <el-menu-item index="3">Processing Center</el-menu-item> -->
 
     <div style="flex-grow: 1;" />
   </el-menu>

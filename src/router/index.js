@@ -2,6 +2,8 @@ const ArticleList = () =>
   import(/* webpackChunkName: "group-index" */ '../components/ArticleList.vue')
 const ArticleContent = () =>
   import(/* webpackChunkName: "group-detail" */ '../components/ArticleContent.vue')
+const Search = () =>
+  import(/* webpackChunkName: "group-detail" */ '../components/Search.vue')
 // const Detail = () =>
 // import(/* webpackChunkName: "group-detail" */ '../components/Details.vue')
 // const Category = () =>
@@ -15,6 +17,10 @@ const router = createRouter({
         {
             path:'/',
             component:ArticleList,
+        },
+        {
+          path:'/Search',
+          component:Search,
         },
         {
             path:'/ArticleContent/:id',
