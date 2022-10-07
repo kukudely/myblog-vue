@@ -11,7 +11,7 @@
             <!-- {{item.ID}} -->
             {{item.title}}
         </div>
-        <div style="padding: 5px; font-family:微软雅黑;">
+        <div style="padding: 5px; font-family:微软雅黑;font-size: 10px;">
             &nbsp;&nbsp;&nbsp;&nbsp;{{item.desc}}
         </div>
     </el-card>

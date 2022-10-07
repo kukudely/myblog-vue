@@ -7,7 +7,7 @@
             </div>
         </el-header>
         <el-main style="background-color:#F5F7FA;height: 100%;">
-            <div style="max-width: 1200px; margin:0 auto">
+            <div style="max-width: 1400px; margin:0 auto">
                 <Main></Main>
                 <!-- <router-view :key="$route.path"></router-view> -->
             </div>

@@ -1,4 +1,5 @@
 <template>
+  
     <el-card class="box-card box-card-main">
         <div>
             <el-image :src=artInfo.img />
@@ -7,9 +8,11 @@
             <!-- {{item.ID}} -->
             {{artInfo.title}}
         </div>
-        <div style="padding: 5px; font-family:微软雅黑;">
-            &nbsp;&nbsp;&nbsp;&nbsp;{{artInfo.content}}
-        </div>
+        
+        <v-md-preview :text="artInfo.content"></v-md-preview>
+        <!-- <div style="padding: 5px; font-family:微软雅黑;">
+            &nbsp;&nbsp;&nbsp;&nbsp;{{artContent}}
+        </div> -->
     </el-card>
     <!-- 评论 -->
     <div>
@@ -51,8 +54,13 @@
 </style>
 
 <script>
+// import mavonEditor from 'mavon-editor'
+// import 'mavon-editor/dist/css/index.css'
 export default {
   props: ['id'],
+  // components:{
+  //   mavonEditor
+  // },
   data() {
     return {
       inputName:"",

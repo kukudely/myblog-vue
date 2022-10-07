@@ -16,10 +16,12 @@
                 </el-card>
                 <!-- 分类 -->
                 <el-card class="box-card box-card-left">
-                    <div v-for="item in cateList" >
+                    <div v-for="item in cateList" id="cate" style="margin-bottom: 5px;">
                         <div style="display: inline;">{{item.name}}</div>
                         
-                        <div style="display: inline; float: right; ">{{this.cateArticleList.get(item.id)}}</div>
+                        <div style="display: inline; float: right; text-align: center;border-radius:5px;width: 25px; background-color:#e2ebf0;">
+                            {{this.cateArticleList.get(item.id)}}
+                        </div>
                     </div>
                 </el-card>
             </div>
@@ -61,9 +63,9 @@
                 </div>
                 <!-- <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
                 </el-card>
-                <el-card class="box-card box-card-left">
+                <!-- <el-card class="box-card box-card-left">
                     
-                </el-card>
+                </el-card> -->
             </div>
             
             <el-card class="box-card box-card-right">
@@ -93,6 +95,14 @@
 }
 .box-card-main{
     margin-bottom: 10px;
+}
+#cate{
+    padding: 5px;
+    font-size: 10px;
+}
+#cate:hover{
+    background-color: #e2ebf0;
+    border-radius: 5px;
 }
 </style>
 <script>
